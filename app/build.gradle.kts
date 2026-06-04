@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.domino.scoretracker"
+    namespace = "app.piptally"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.domino.scoretracker"
+        applicationId = "app.piptally"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
@@ -75,4 +75,8 @@ dependencies {
 
     // Coroutines
     implementation(libs.kotlinx.coroutines.android)
+
+    // Testing
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk)
 }

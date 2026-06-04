@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "DominoScoreTracker"
+rootProject.name = "PipTally"
 include(":app")
