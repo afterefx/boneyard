@@ -9,9 +9,9 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT="$SCRIPT_DIR/PipTally.xcodeproj"
-SCHEME="PipTally"
-BUNDLE_ID="app.piptally"
+PROJECT="$SCRIPT_DIR/Boneyard.xcodeproj"
+SCHEME="Boneyard"
+BUNDLE_ID="app.boneyard"
 BUILD_DIR="$SCRIPT_DIR/.build/simulator"
 
 # ── Helpers ──────────────────────────────────────────────────────────────────

@@ -1,6 +1,8 @@
-# Domino Score Tracker
+# Boneyard — Domino Scorer (Android)
 
-Domino Score Tracker is a modern Android application designed to simplify scoring for a specific 4-player dominoes variant played "off the spinner." It provides a robust, round-by-round scoring interface, player statistics, and game history, all wrapped in a sleek Material 3 interface.
+A 4-player domino score-tracking app for Mexican Train / Double-Six games. Tracks shaker rotation, spinner rounds, and cumulative scores across all 14 rounds so you can focus on the game.
+
+Also available on [iOS](https://github.com/afterefx/boneyard-ios).
 
 <div align="center">
   <img src="docs/screenshots/home_screen.png" alt="Home Screen" width="50%" />
