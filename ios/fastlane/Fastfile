@@ -1,0 +1,44 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Build and upload a new beta build to TestFlight"
+  lane :beta do
+    # Create a temporary keychain so certificate import works on headless CI
+    setup_ci if ENV["CI"]
+
+    # Import the distribution certificate into the temporary keychain
+    import_certificate(
+      certificate_path: ENV["CERTIFICATE_PATH"],
+      certificate_password: ENV["CERTIFICATE_PASSWORD"] || "",
+      keychain_name: "fastlane_tmp_keychain",
+      keychain_password: ""
+    )
+
+    # Install the App Store provisioning profile
+    install_provisioning_profile(path: ENV["PROVISIONING_PROFILE_PATH"])
+
+    # Switch the Xcode project to manual signing so CI can control it
+    update_code_signing_settings(
+      use_automatic_signing: false,
+      bundle_identifier: "app.boneyard",
+      code_sign_identity: "iPhone Distribution",
+      profile_name: ENV["PROVISIONING_PROFILE_NAME"]
+    )
+
+    # Build a signed .ipa for App Store distribution
+    build_ios_app(
+      scheme: "Boneyard",
+      export_method: "app-store",
+      output_directory: "./build",
+      output_name: "Boneyard.ipa",
+      clean: true
+    )
+
+    # Upload to TestFlight (internal only — no external testers auto-added)
+    upload_to_testflight(
+      api_key_path: ENV["APP_STORE_CONNECT_KEY_PATH"],
+      distribute_external: false,
+      notify_external_testers: false
+    )
+  end
+end

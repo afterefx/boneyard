@@ -1,0 +1,21 @@
+# Xcode build artifacts
+.build/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+DerivedData/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Fastlane CI artifacts
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/
+fastlane/test_output/
+build/
+certificate.p12
+profile.mobileprovision
+asc_api_key.json
+
+# macOS
+.DS_Store

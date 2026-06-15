@@ -1,98 +1,46 @@
-# Domino Score Tracker
+# Boneyard — Domino Scorer
 
-Domino Score Tracker is a modern Android application designed to simplify scoring for a specific 4-player dominoes variant played "off the spinner." It provides a robust, round-by-round scoring interface, player statistics, and game history, all wrapped in a sleek Material 3 interface.
+A 4-player domino score-tracking app for Mexican Train / Double-Six games. Tracks shaker rotation, spinner rounds, and cumulative scores across all 14 rounds so you can focus on the game.
 
-<div align="center">
-  <img src="docs/screenshots/home_screen.png" alt="Home Screen" width="50%" />
-</div>
+Available on Android (this repo) and [iOS](https://github.com/afterefx/boneyard-ios).
 
-## 🎲 The Game
+## Screenshot
 
-The game follows a specific 14-round sequence where players score based on the dots remaining in their hand.
-- **Rounds:** 14 rounds in total (Double-6 down to Double-0, then back up to Double-6).
-- **Spinner:** Each round has a specific "spinner" value that dictates the play.
-- **Shaker:** The "shaker" role rotates among the 4 players each round.
-- **Goal:** The player with the lowest total score at the end of 14 rounds wins.
+<img src="android/docs/screenshots/home_screen.png" width="320" alt="Home screen" />
 
-## ✨ Features
+## Features
 
-- **Player Management:** Create and customize player profiles with names, colors, and avatars.
-- **Game Setup:** Easily configure new games by selecting 4 players, arranging their order, and choosing the first shaker.
-- **Active Game Tracking:**
-    - Clear visibility of current round, spinner value, and whose turn it is to shake.
-    - Simple score entry for each player per round.
-    - Live running totals and scoreboard.
-    - **Undo** functionality to correct mistakes in the last round.
-    - **Pause/Resume** support to pick up games later.
-- **Game History:** Review all completed games with full scoreboard breakdowns.
-- **Player Statistics:** Track performance over time, including games won, win percentages, average scores, and best/worst performances.
-- **Material 3 Design:** A beautiful, responsive UI that supports both Light and Dark themes.
+- **14-round games** with automatic spinner sequence `[6, 5, 4, 3, 2, 1, 0, 0, 1, 2, 3, 4, 5, 6]`
+- **Shaker rotation** tracked automatically each round
+- **Live scoreboard** with cumulative totals and current leader highlighted
+- **Pause & resume** — games survive app restarts
+- **Game history** with full round-by-round breakdown
+- **Quick Start templates** — save a table of 4 players and start a game in one tap
+- **Themes** — System, OLED Pure Black, Slate Deep Gray, Always Light
 
-## 🛠 Tech Stack
+## Tech stack
 
-- **Language:** [Kotlin](https://kotlinlang.org/)
-- **UI Framework:** [Jetpack Compose](https://developer.android.com/jetpack/compose) with Material 3
-- **Architecture:** MVVM (Model-View-ViewModel) with Clean Architecture principles
-- **Dependency Injection:** [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
-- **Database:** [Room](https://developer.android.com/training/data-storage/room) for local persistence
-- **Navigation:** [Navigation Compose](https://developer.android.com/jetpack/compose/navigation)
-- **Asynchronous Work:** [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) & Flow
-- **Build System:** Gradle Kotlin DSL with Version Catalog
+- Kotlin + Jetpack Compose + Material 3
+- Circuit (Slack) for navigation and UI state
+- Metro for dependency injection
+- Room for local persistence
+- Clean Architecture (domain / data / UI layers)
 
-## 📂 Project Structure
+## Building
 
-The project follows Clean Architecture layering to ensure maintainability and testability:
-
-```text
-app/src/main/java/com/domino/scoretracker/
-├── DominoTrackerApp.kt          # Application class, Hilt setup
-├── MainActivity.kt               # Entry point, Navigation host
-├── data/                         # Implementation of repositories and local DB
-│   ├── local/                    # Room Database, DAOs, Entities
-│   ├── mapper/                   # Data-to-Domain mappers
-│   └── repository/               # Repository implementations
-├── domain/                       # Business logic (Pure Kotlin)
-│   ├── model/                    # Domain models
-│   ├── repository/               # Repository interfaces
-│   └── usecase/                  # Functional business units
-├── di/                           # Hilt modules
-├── ui/                           # UI Layer (Jetpack Compose)
-│   ├── components/               # Reusable UI widgets
-│   ├── navigation/               # NavGraph and Screen definitions
-│   ├── theme/                    # Material 3 colors, shapes, and typography
-│   └── {home, game, player...}   # Feature-specific Screens and ViewModels
-└── util/                         # Constants and helper functions
-```
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Android Studio Koala or newer
-- JDK 17
-- Android SDK 35 (Compile SDK)
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/domino-score-tracker.git
-   ```
-2. Open the project in Android Studio.
-3. Sync the project with Gradle files.
-4. Run the `app` configuration on an emulator or physical device (Min SDK 26).
-
-## 🧪 Testing
-
-- **Unit Tests:** Business logic in the `domain` layer and `ViewModels` can be tested via JUnit.
-- **Instrumentation Tests:** UI components and Room database integrations can be tested using Compose testing libraries.
-
-Run tests via Gradle:
 ```bash
-./gradlew test
-./gradlew connectedAndroidTest
+cd android
+./gradlew assembleDebug        # debug APK
+./gradlew installDebug         # install on connected device
+./gradlew test                 # unit tests
 ```
 
-## 📜 License
+## Releasing
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+Push a version tag to trigger the CI pipeline to Google Play Internal Testing:
+
+```bash
+git tag v1.0.0 && git push --tags
+```
+
+Required GitHub secrets: `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`, `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON`.

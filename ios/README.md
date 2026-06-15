@@ -1,8 +1,12 @@
-# 🎴 PipTally — Domino Scorer
+# Boneyard — Domino Scorer (iOS)
 
-A premium, native iOS score tracking application (Domino Scorer) for Domino matches, written entirely in **Swift**, **SwiftUI**, and persisted locally using **SwiftData**. 
+A 4-player domino score-tracking app for Mexican Train / Double-Six games. Tracks shaker rotation, spinner rounds, and cumulative scores across all 14 rounds so you can focus on the game.
 
-Adhering strictly to Apple's modern **Human Interface Guidelines (HIG)**, the app delivers a fluid, dark-themed, and highly responsive user experience. It retains all the classic game rules, circular seating sequences, and dynamic 14-round double-spinner math from the original system.
+Also available on [Android](https://github.com/afterefx/boneyard).
+
+## Screenshot
+
+<img src="docs/screenshots/home_screen.png" width="320" alt="Home screen" />
 
 ---
 
@@ -30,8 +34,8 @@ ios-domino-score-tracker/
 ├── ARCHITECTURE.md              # SwiftData relations, MVVM flow, transactions
 ├── CONTRIBUTING.md              # Xcode generator instructions, coding styles
 ├── generate_project.py          # Dynamic Xcode project generator script
-├── PipTally/
-│   ├── PipTallyApp.swift        # App entry point and ModelContainer initialization
+├── Boneyard/
+│   ├── BoneyardApp.swift        # App entry point and ModelContainer initialization
 │   ├── Utils/
 │   │   └── GameConstants.swift  # Double-spinner math and circular seating calculations
 │   │   └── ThemeColors.swift    # Core color palette & custom themes
@@ -75,7 +79,7 @@ ios-domino-score-tracker/
    ```
 3. **Open in Xcode**:
    ```bash
-   open PipTally.xcodeproj
+   open Boneyard.xcodeproj
    ```
 4. Press **Cmd + R** inside Xcode to boot the active **iPhone Simulator** and deploy the app!
 
@@ -86,7 +90,7 @@ ios-domino-score-tracker/
 If you are working in a terminal-only environment or performing CI/CD checks, you can compile and verify the entire codebase against the host SDK:
 
 ```bash
-swiftc -o /dev/null -sdk $(xcrun --show-sdk-path -sdk macosx) PipTally/PipTallyApp.swift PipTally/Utils/GameConstants.swift PipTally/Utils/ThemeColors.swift PipTally/Models/DominoModels.swift PipTally/Views/Components/PlayerAvatar.swift PipTally/Views/Components/DominoTile.swift PipTally/Views/Components/ScoreboardTable.swift PipTally/Views/Components/ScoreEntryRow.swift PipTally/Views/HomeView.swift PipTally/Views/PlayerListView.swift PipTally/Views/PlayerEditView.swift PipTally/Views/PlayerProfileView.swift PipTally/Views/GameSetupView.swift PipTally/Views/ActiveGameView.swift PipTally/Views/GameSummaryView.swift PipTally/Views/GameHistoryView.swift PipTally/Views/SettingsView.swift
+swiftc -o /dev/null -sdk $(xcrun --show-sdk-path -sdk macosx) Boneyard/BoneyardApp.swift Boneyard/Utils/GameConstants.swift Boneyard/Utils/ThemeColors.swift Boneyard/Models/DominoModels.swift Boneyard/Views/Components/PlayerAvatar.swift Boneyard/Views/Components/DominoTile.swift Boneyard/Views/Components/ScoreboardTable.swift Boneyard/Views/Components/ScoreEntryRow.swift Boneyard/Views/HomeView.swift Boneyard/Views/PlayerListView.swift Boneyard/Views/PlayerEditView.swift Boneyard/Views/PlayerProfileView.swift Boneyard/Views/GameSetupView.swift Boneyard/Views/ActiveGameView.swift Boneyard/Views/GameSummaryView.swift Boneyard/Views/GameHistoryView.swift Boneyard/Views/SettingsView.swift
 ```
 
 *This compilation check will finish with exit code `0` and zero warnings.*

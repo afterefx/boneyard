@@ -27,6 +27,16 @@ render.experimental.xml
 *.jks
 *.keystore
 
+# Fastlane CI artifacts (decoded at runtime from secrets, never committed)
+**/fastlane/report.xml
+**/fastlane/Preview.html
+**/fastlane/screenshots
+**/fastlane/test_output
+ios/certificate.p12
+ios/profile.mobileprovision
+ios/asc_api_key.json
+ios/build/
+
 # Google Services (e.g. APIs or Firebase)
 google-services.json
 

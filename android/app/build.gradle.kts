@@ -2,27 +2,41 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.hilt.android)
+    id("org.jetbrains.kotlin.plugin.parcelize")
+    alias(libs.plugins.metro)
     alias(libs.plugins.ksp)
 }
 
 android {
-    namespace = "app.piptally"
-    compileSdk = 35
+    namespace = "app.boneyard"
+    compileSdk = 36
 
     defaultConfig {
-        applicationId = "app.piptally"
+        applicationId = "app.boneyard"
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("release") {
+            val keystorePath = System.getenv("KEYSTORE_PATH")
+            if (keystorePath != null) {
+                storeFile = file(keystorePath)
+                storePassword = System.getenv("KEYSTORE_PASSWORD")
+                keyAlias = System.getenv("KEY_ALIAS")
+                keyPassword = System.getenv("KEY_PASSWORD")
+            }
+        }
+    }
+
     buildTypes {
         release {
-            isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("release")
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -35,12 +49,14 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-
     buildFeatures {
         compose = true
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
     }
 }
 
@@ -48,7 +64,6 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.runtime.compose)
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.activity.compose)
 
     // Compose
@@ -60,18 +75,21 @@ dependencies {
     implementation(libs.compose.material.icons.extended)
     debugImplementation(libs.compose.ui.tooling)
 
-    // Navigation
-    implementation(libs.navigation.compose)
+    // Metro
+    implementation(libs.metro.runtime)
 
-    // Hilt
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.android.compiler)
-    implementation(libs.hilt.navigation.compose)
+    // Circuit
+    implementation(libs.circuit.foundation)
+    api(libs.circuit.codegen.annotations)
+    ksp(libs.circuit.codegen)
 
     // Room
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)
+
+    // Reorderable drag-and-drop
+    implementation(libs.reorderable)
 
     // Coroutines
     implementation(libs.kotlinx.coroutines.android)
@@ -79,4 +97,8 @@ dependencies {
     // Testing
     testImplementation(libs.junit)
     testImplementation(libs.mockk)
+}
+
+ksp {
+    arg("circuit.codegen.mode", "metro")
 }
