@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  6-3 domino tile rotated 15° inside the 108×108 adaptive-icon safe zone (18–90).
+  Base tile: 32×64, centered at (54,54) — occupies x=38–70, y=22–86.
+  At 15° the rotated bounding box is ≈48×70, well within the safe zone.
+  Corner radius = 3.84, pip radius = 2.24.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <group
+        android:rotation="15"
+        android:pivotX="54"
+        android:pivotY="54">
+
+        <!-- Tile body (ivory) -->
+        <path
+            android:fillColor="#F5F0E8"
+            android:pathData="M41.84,22 L66.16,22 Q70,22 70,25.84 L70,82.16 Q70,86 66.16,86 L41.84,86 Q38,86 38,82.16 L38,25.84 Q38,22 41.84,22 Z" />
+
+        <!-- Divider line between the two halves -->
+        <path
+            android:fillColor="#D0C9C0"
+            android:pathData="M41.84,53.52 L66.16,53.52 L66.16,54.48 L41.84,54.48 Z" />
+
+        <!-- Pips: 6 on top half, 3 (diagonal) on bottom half -->
+        <path
+            android:fillColor="#1A1A1A"
+            android:pathData="
+                M45.36,30.32 A2.24,2.24 0 1,0 49.84,30.32 A2.24,2.24 0 1,0 45.36,30.32 Z
+                M58.16,30.32 A2.24,2.24 0 1,0 62.64,30.32 A2.24,2.24 0 1,0 58.16,30.32 Z
+                M45.36,38 A2.24,2.24 0 1,0 49.84,38 A2.24,2.24 0 1,0 45.36,38 Z
+                M58.16,38 A2.24,2.24 0 1,0 62.64,38 A2.24,2.24 0 1,0 58.16,38 Z
+                M45.36,45.68 A2.24,2.24 0 1,0 49.84,45.68 A2.24,2.24 0 1,0 45.36,45.68 Z
+                M58.16,45.68 A2.24,2.24 0 1,0 62.64,45.68 A2.24,2.24 0 1,0 58.16,45.68 Z
+                M45.36,63.6 A2.24,2.24 0 1,0 49.84,63.6 A2.24,2.24 0 1,0 45.36,63.6 Z
+                M51.76,70 A2.24,2.24 0 1,0 56.24,70 A2.24,2.24 0 1,0 51.76,70 Z
+                M58.16,76.4 A2.24,2.24 0 1,0 62.64,76.4 A2.24,2.24 0 1,0 58.16,76.4 Z" />
+    </group>
+</vector>
