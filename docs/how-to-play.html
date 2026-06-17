@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Play — Boneyard</title>
+  <meta name="description" content="Learn the rules of Off-the-Spinner dominoes — the 4-player domino game tracked by the Boneyard app." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">
+      <div class="nav-domino" aria-hidden="true">
+        <div class="nav-domino-half"><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div>
+        <div style="height:1px;background:rgba(26,26,26,0.3);width:80%;"></div>
+        <div class="nav-domino-half"><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div>
+      </div>
+      Boneyard
+    </a>
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link active" href="how-to-play.html">How to Play</a>
+    <a class="nav-link" href="privacy.html">Privacy</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <div class="page-header">
+    <h1>How to Play</h1>
+    <p>Off-the-Spinner Dominoes for 4 players — rules, scoring, and match structure.</p>
+  </div>
+
+  <!-- Overview -->
+  <div class="card" style="margin-bottom:24px;">
+    <h2 class="section-title">Overview</h2>
+    <p style="color:#333;margin-bottom:16px;">
+      Off-the-Spinner is a 4-player domino game played over 14 rounds. Each round is built around a different <strong>double domino</strong> called the <em>spinner</em>. Players score points based on how many pip dots remain in their hand when someone goes out. After all 14 rounds, the player with the <strong>lowest</strong> total score wins.
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;">
+      <div style="background:var(--bg);border-radius:8px;padding:16px;text-align:center;">
+        <div style="font-size:28px;margin-bottom:4px;">👥</div>
+        <div style="font-weight:700;font-size:15px;">4 Players</div>
+        <div style="font-size:12px;color:var(--muted);">Exactly 4 required</div>
+      </div>
+      <div style="background:var(--bg);border-radius:8px;padding:16px;text-align:center;">
+        <div style="font-size:28px;margin-bottom:4px;">🁣</div>
+        <div style="font-weight:700;font-size:15px;">Double-Six Set</div>
+        <div style="font-size:12px;color:var(--muted);">28 tiles total</div>
+      </div>
+      <div style="background:var(--bg);border-radius:8px;padding:16px;text-align:center;">
+        <div style="font-size:28px;margin-bottom:4px;">🔁</div>
+        <div style="font-weight:700;font-size:15px;">14 Rounds</div>
+        <div style="font-size:12px;color:var(--muted);">Per match</div>
+      </div>
+      <div style="background:var(--bg);border-radius:8px;padding:16px;text-align:center;">
+        <div style="font-size:28px;margin-bottom:4px;">🏆</div>
+        <div style="font-weight:700;font-size:15px;">Lowest Score Wins</div>
+        <div style="font-size:12px;color:var(--muted);">After all 14 rounds</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- What you need -->
+  <div class="card" style="margin-bottom:24px;">
+    <h2 class="section-title">What You Need</h2>
+    <ul style="padding-left:20px;line-height:2;color:#333;">
+      <li>One <strong>double-six domino set</strong> — 28 tiles numbered 0–0 through 6–6</li>
+      <li>Exactly <strong>4 players</strong></li>
+      <li>A flat surface to play on</li>
+      <li>The <strong>Boneyard app</strong> to track scores automatically</li>
+    </ul>
+    <div class="callout" style="margin-top:16px;">
+      A standard double-six set has 28 tiles. With 4 players each drawing 7 tiles, every tile is dealt — there is no boneyard pile left over at the start. This is where the game (and the app) get their name.
+    </div>
+  </div>
+
+  <!-- Round Structure -->
+  <div class="card" style="margin-bottom:24px;">
+    <h2 class="section-title">The 14-Round Spinner Sequence</h2>
+    <p style="color:#333;margin-bottom:16px;">
+      Each round is defined by a specific <strong>double domino</strong> — the <em>spinner</em>. The sequence goes from Double-6 down to Double-0 over 7 rounds, then back up to Double-6 over the next 7 rounds. The Boneyard app displays the spinner for the current round automatically.
+    </p>
+    <div class="spinner-grid">
+      <div class="spinner-cell"><div class="round-num">Rd 1</div><div class="double-val">6</div><div style="font-size:10px;opacity:.6">Double-6</div></div>
+      <div class="spinner-cell"><div class="round-num">Rd 2</div><div class="double-val">5</div><div style="font-size:10px;opacity:.6">Double-5</div></div>
+      <div class="spinner-cell"><div class="round-num">Rd 3</div><div class="double-val">4</div><div style="font-size:10px;opacity:.6">Double-4</div></div>
+      <div class="spinner-cell"><div class="round-num">Rd 4</div><div class="double-val">3</div><div style="font-size:10px;opacity:.6">Double-3</div></div>
+      <div class="spinner-cell"><div class="round-num">Rd 5</div><div class="double-val">2</div><div style="font-size:10px;opacity:.6">Double-2</div></div>
+      <div class="spinner-cell"><div class="round-num">Rd 6</div><div class="double-val">1</div><div style="font-size:10px;opacity:.6">Double-1</div></div>
+      <div class="spinner-cell"><div class="round-num">Rd 7</div><div class="double-val">0</div><div style="font-size:10px;opacity:.6">Double-0</div></div>
+      <div class="spinner-cell"><div class="round-num">Rd 8</div><div class="double-val">0</div><div style="font-size:10px;opacity:.6">Double-0</div></div>
+      <div class="spinner-cell"><div class="round-num">Rd 9</div><div class="double-val">1</div><div style="font-size:10px;opacity:.6">Double-1</div></div>
+      <div class="spinner-cell"><div class="round-num">Rd 10</div><div class="double-val">2</div><div style="font-size:10px;opacity:.6">Double-2</div></div>
+      <div class="spinner-cell"><div class="round-num">Rd 11</div><div class="double-val">3</div><div style="font-size:10px;opacity:.6">Double-3</div></div>
+      <div class="spinner-cell"><div class="round-num">Rd 12</div><div class="double-val">4</div><div style="font-size:10px;opacity:.6">Double-4</div></div>
+      <div class="spinner-cell"><div class="round-num">Rd 13</div><div class="double-val">5</div><div style="font-size:10px;opacity:.6">Double-5</div></div>
+      <div class="spinner-cell"><div class="round-num">Rd 14</div><div class="double-val">6</div><div style="font-size:10px;opacity:.6">Double-6</div></div>
+    </div>
+  </div>
+
+  <!-- The Shaker -->
+  <div class="card" style="margin-bottom:24px;">
+    <h2 class="section-title">The Shaker</h2>
+    <p style="color:#333;margin-bottom:16px;">
+      The <strong>shaker</strong> is the player who shuffles ("shakes") all 28 tiles face-down and deals them out at the start of each round. The role rotates clockwise through all 4 players, advancing one seat each round.
+    </p>
+    <div class="callout tip">
+      <strong>Tip:</strong> Before starting a match, use the Boneyard app's setup screen to pick who shakes first. The app will then display the shaker for every subsequent round automatically.
+    </div>
+
+    <h3 style="font-size:16px;font-weight:700;margin:20px 0 10px;">Shaker rotation example (Player A shakes first):</h3>
+    <table>
+      <thead><tr><th>Round</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr></thead>
+      <tbody>
+        <tr><td>Shaker</td><td>A</td><td>B</td><td>C</td><td>D</td><td>A</td><td>B</td><td>C</td><td>D</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Playing a round -->
+  <div class="card" style="margin-bottom:24px;">
+    <h2 class="section-title">Playing a Round — Step by Step</h2>
+    <ol class="steps">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Shuffle &amp; Deal</h3>
+          <p>The shaker turns all 28 tiles face-down and mixes them thoroughly. Each player then draws exactly 7 tiles and stands them up so only they can see their own tiles.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Find the Spinner</h3>
+          <p>The player who holds the round's spinner (the required double) places it face-up in the center of the table to start the chain. For example, in Round 1 the spinner is Double-6 — whoever holds [6|6] plays it first.</p>
+          <p style="margin-top:8px;">If no one has the spinner, players take turns drawing additional tiles from any leftover tiles until the spinner is found. The player who draws it plays it immediately.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Play Off the Spinner</h3>
+          <p>Play moves clockwise starting from the player to the left of whoever played the spinner. On your turn you must play a tile that matches one of the open ends on the table. The spinner can be extended in all four directions until all four sides are occupied — after that, play continues only off the two main open ends.</p>
+          <p style="margin-top:8px;">If you cannot play a tile, you must <strong>pass</strong> your turn. (All tiles were dealt at the start, so there is no boneyard to draw from during a round.)</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Go Out</h3>
+          <p>The round ends the moment any player plays their last tile. That player is the <strong>round winner</strong> and scores <strong>0 points</strong> for the round.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h3>Score the Round</h3>
+          <p>Every other player counts the total number of pips (dots) on all tiles still in their hand. That pip count is their score for the round. Scores are entered into the Boneyard app and added to each player's running total.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <!-- Scoring -->
+  <div class="card" style="margin-bottom:24px;">
+    <h2 class="section-title">Scoring</h2>
+    <p style="color:#333;margin-bottom:16px;">
+      Lower is better. At the end of each round you count the pips remaining in your hand and record that number. The goal is to minimize your cumulative total across all 14 rounds.
+    </p>
+    <table>
+      <thead>
+        <tr><th>Situation</th><th>Score for the round</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>You go out first (play your last tile)</td><td><strong>0</strong> — round winner</td></tr>
+        <tr><td>You have tiles left when someone goes out</td><td>Total pip count of your remaining tiles</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-size:16px;font-weight:700;margin:24px 0 10px;">Example round</h3>
+    <table>
+      <thead><tr><th>Player</th><th>Tiles remaining</th><th>Pip total</th><th>Round score</th></tr></thead>
+      <tbody>
+        <tr><td>Alice</td><td>— (went out first)</td><td>—</td><td><strong>0</strong> 🏆</td></tr>
+        <tr><td>Bob</td><td>[3|4], [2|1]</td><td>3+4+2+1 = 10</td><td><strong>10</strong></td></tr>
+        <tr><td>Carol</td><td>[6|5]</td><td>6+5 = 11</td><td><strong>11</strong></td></tr>
+        <tr><td>David</td><td>[6|6], [4|2]</td><td>6+6+4+2 = 18</td><td><strong>18</strong></td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout warn" style="margin-top:16px;">
+      <strong>Score range:</strong> Each round score can be anywhere from 0 (went out) to as high as all your remaining tiles allow. The app accepts any non-negative whole number up to 999 per round.
+    </div>
+  </div>
+
+  <!-- Winning -->
+  <div class="card" style="margin-bottom:24px;">
+    <h2 class="section-title">Winning the Match</h2>
+    <p style="color:#333;margin-bottom:16px;">
+      After all 14 rounds have been played and scored, the player with the <strong>lowest cumulative score</strong> wins the match. The Boneyard app keeps a running standings board throughout the game so everyone can see the leaderboard at any time.
+    </p>
+    <div class="callout tip">
+      <strong>Strategy note:</strong> Because the spinner sequence repeats (Double-0 appears twice, and both Double-6 rounds bookend the match), high-value tiles become dangerous in later rounds. Dumping your high pips early is key.
+    </div>
+  </div>
+
+  <!-- Quick Reference -->
+  <div class="card" style="margin-bottom:24px;">
+    <h2 class="section-title">Quick Reference</h2>
+    <table>
+      <thead><tr><th>Rule</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Players</td><td>Exactly 4</td></tr>
+        <tr><td>Domino set</td><td>Double-six (28 tiles)</td></tr>
+        <tr><td>Tiles per player</td><td>7 (all dealt at start)</td></tr>
+        <tr><td>Rounds per match</td><td>14</td></tr>
+        <tr><td>Spinner sequence</td><td>6 → 5 → 4 → 3 → 2 → 1 → 0 → 0 → 1 → 2 → 3 → 4 → 5 → 6</td></tr>
+        <tr><td>Shaker rotation</td><td>Clockwise, advances one seat each round</td></tr>
+        <tr><td>Round winner score</td><td>0 (goes out first)</td></tr>
+        <tr><td>Other players score</td><td>Sum of pips on tiles still in hand</td></tr>
+        <tr><td>Match winner</td><td>Lowest cumulative score after round 14</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Glossary -->
+  <div class="card" style="margin-bottom:40px;">
+    <h2 class="section-title">Glossary</h2>
+    <dl style="display:grid;gap:14px;">
+      <div>
+        <dt style="font-weight:700;">Spinner</dt>
+        <dd style="color:#333;margin-left:0;margin-top:2px;">The double domino that opens a round (e.g., [6|6] in Round 1). It can be extended in all four directions at the start.</dd>
+      </div>
+      <div>
+        <dt style="font-weight:700;">Shaker</dt>
+        <dd style="color:#333;margin-left:0;margin-top:2px;">The player who shuffles and deals the tiles for that round. Rotates clockwise each round.</dd>
+      </div>
+      <div>
+        <dt style="font-weight:700;">Pip</dt>
+        <dd style="color:#333;margin-left:0;margin-top:2px;">A single dot on a domino face. A [4|3] tile has 7 pips total.</dd>
+      </div>
+      <div>
+        <dt style="font-weight:700;">Go out</dt>
+        <dd style="color:#333;margin-left:0;margin-top:2px;">Playing your last tile, which ends the round. Going out earns 0 points for that round.</dd>
+      </div>
+      <div>
+        <dt style="font-weight:700;">Boneyard</dt>
+        <dd style="color:#333;margin-left:0;margin-top:2px;">In standard domino games, the boneyard is the pile of undealt tiles you draw from. In Off-the-Spinner, all tiles are dealt at the start — no boneyard remains. The game (and this app) take their name from that pile.</dd>
+      </div>
+      <div>
+        <dt style="font-weight:700;">Running total</dt>
+        <dd style="color:#333;margin-left:0;margin-top:2px;">Each player's cumulative score across all rounds played so far.</dd>
+      </div>
+    </dl>
+  </div>
+
+  <div style="text-align:center;padding:20px 0 40px;">
+    <a href="index.html" class="btn btn-primary" style="background:var(--ink);color:var(--ivory);">← Back to Home</a>
+  </div>
+
+</div><!-- .page -->
+
+<footer>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="how-to-play.html">How to Play</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+  <p>© 2025 Boneyard. All data stays on your device.</p>
+</footer>
+
+</body>
+</html>
