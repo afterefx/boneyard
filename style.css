@@ -299,7 +299,7 @@ tr:nth-child(even) td { background: var(--bg); }
   display: inline-flex;
   flex-direction: row;
   align-items: center;
-  background: var(--ivory);
+  background: var(--domino-body);
   border-radius: 7px;
   padding: 5px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.25);
@@ -314,7 +314,7 @@ tr:nth-child(even) td { background: var(--bg); }
   height: 24px;
 }
 .domino-h-half .pip {
-  background: var(--chrome);
+  background: var(--domino-pip);
   border-radius: 50%;
   width: 80%;
   aspect-ratio: 1;
@@ -324,7 +324,7 @@ tr:nth-child(even) td { background: var(--bg); }
 .domino-h-div {
   width: 1px;
   height: 24px;
-  background: rgba(26,26,26,0.2);
+  background: var(--domino-pip);
   flex-shrink: 0;
   margin: 0 3px;
 }
