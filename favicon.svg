@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <g transform="rotate(-12, 16, 16)">
+    <!-- Domino body -->
+    <rect x="10" y="3" width="12" height="26" rx="2" fill="#1A1A1A"/>
+    <!-- Divider -->
+    <rect x="10.5" y="15.5" width="11" height="0.75" fill="rgba(245,240,232,0.2)"/>
+    <!-- Top half: 6 pips (2 columns × 3 rows) -->
+    <circle cx="13" cy="6.5"  r="1.2" fill="#F5F0E8"/>
+    <circle cx="19" cy="6.5"  r="1.2" fill="#F5F0E8"/>
+    <circle cx="13" cy="10"   r="1.2" fill="#F5F0E8"/>
+    <circle cx="19" cy="10"   r="1.2" fill="#F5F0E8"/>
+    <circle cx="13" cy="13.5" r="1.2" fill="#F5F0E8"/>
+    <circle cx="19" cy="13.5" r="1.2" fill="#F5F0E8"/>
+    <!-- Bottom half: 3 pips (diagonal — top-left, center, bottom-right) -->
+    <circle cx="13" cy="19" r="1.2" fill="#F5F0E8"/>
+    <circle cx="16" cy="23" r="1.2" fill="#F5F0E8"/>
+    <circle cx="19" cy="27" r="1.2" fill="#F5F0E8"/>
+  </g>
+</svg>
