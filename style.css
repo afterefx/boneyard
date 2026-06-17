@@ -312,9 +312,11 @@ tr:nth-child(even) td { background: var(--bg); }
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(3, 1fr);
   gap: 2px;
-  width: 36px;
-  height: 48px;
+  width: 42px;
+  height: 28px;
 }
+/* f6 pips sized to row height (not column width) so they stay small on a wide face */
+.domino-face.f6 .p { height: 68%; width: auto; }
 /* f1–f5: 3×3 grid with spacer spans at non-pip positions */
 .domino-face.f1,
 .domino-face.f2,
