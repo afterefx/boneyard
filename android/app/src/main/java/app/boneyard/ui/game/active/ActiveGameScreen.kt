@@ -42,6 +42,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -157,6 +158,9 @@ private fun ActiveGameScreenContent(
     onSaveEditHistory: () -> Unit,
 ) {
     var showPauseDialog by remember { mutableStateOf(false) }
+
+    BackHandler { showPauseDialog = true }
+
     val isViewingHistory = uiState.viewingRoundIndex < uiState.currentRoundIndex
     val isViewingFuture = uiState.viewingRoundIndex > uiState.currentRoundIndex
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()

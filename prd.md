@@ -331,7 +331,9 @@ When navigating past the current round:
 - Pause button (⏸) in the navigation bar toolbar
 - Triggers a confirmation alert: "Pause Game?" with "Pause" and "Keep Playing" options
 - On pause: game status set to `paused`, user is returned to the home dashboard
-- Back button is hidden during gameplay to prevent accidental exits
+- **Back gesture / back button during gameplay always triggers the pause confirmation dialog — never exits the game directly**
+  - Android: system back gesture is intercepted by a `BackHandler` that shows the pause dialog; on the home screen the back gesture exits the app normally; settings opens as a bottom sheet and the back gesture dismisses it
+  - iOS: the system back button and swipe-back gesture are hidden (`navigationBarBackButtonHidden`), preventing accidental exits; the pause button is the only exit path; settings opens as a modal sheet and the swipe-down / Done button closes it
 
 #### 3.4.11 Game Completion
 
