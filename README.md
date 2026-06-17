@@ -6,7 +6,7 @@ Available on [iOS](https://github.com/afterefx/boneyard-ios) and [Android](https
 
 ## Website
 
-The project website (landing page, game rules, privacy policy) is hosted on GitHub Pages and lives in the `site/` directory.
+The project website (landing page, game rules, privacy policy) is hosted on GitHub Pages. The HTML and CSS files live at the repo root (`index.html`, `how-to-play.html`, `privacy.html`, `style.css`).
 
 ## Features
 

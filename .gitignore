@@ -1,3 +1,7 @@
+# Platform subdirectories (each has its own git repo)
+android/
+ios/
+
 # Gradle files
 .gradle/
 build/
