@@ -1,12 +1,12 @@
 # Boneyard — Domino Scorer
 
-A 4-player domino score-tracking app for Mexican Train / Double-Six games. Tracks shaker rotation, spinner rounds, and cumulative scores across all 14 rounds so you can focus on the game.
+A 4-player domino score-tracking app for Off-the-Spinner / Double-Six games. Tracks shaker rotation, spinner rounds, and cumulative scores across all 14 rounds so you can focus on the game.
 
-Available on Android (this repo) and [iOS](https://github.com/afterefx/boneyard-ios).
+Available on [iOS](https://github.com/afterefx/boneyard-ios) and [Android](https://github.com/afterefx/boneyard-android).
 
-## Screenshot
+## Website
 
-<img src="android/docs/screenshots/home_screen.png" width="320" alt="Home screen" />
+The project website (landing page, game rules, privacy policy) is hosted on GitHub Pages and lives in the `site/` directory.
 
 ## Features
 
@@ -18,29 +18,39 @@ Available on Android (this repo) and [iOS](https://github.com/afterefx/boneyard-
 - **Quick Start templates** — save a table of 4 players and start a game in one tap
 - **Themes** — System, OLED Pure Black, Slate Deep Gray, Always Light
 
-## Tech stack
-
-- Kotlin + Jetpack Compose + Material 3
-- Circuit (Slack) for navigation and UI state
-- Metro for dependency injection
-- Room for local persistence
-- Clean Architecture (domain / data / UI layers)
-
-## Building
+## iOS — Building & Running
 
 ```bash
-cd android
-./gradlew assembleDebug        # debug APK
-./gradlew installDebug         # install on connected device
-./gradlew test                 # unit tests
+cd ios
+
+# Syntax check (fast, no Xcode needed)
+swiftc -o /dev/null -sdk $(xcrun --show-sdk-path -sdk macosx) \
+  Boneyard/BoneyardApp.swift Boneyard/Utils/GameConstants.swift \
+  Boneyard/Utils/ThemeColors.swift Boneyard/Models/DominoModels.swift \
+  Boneyard/Views/Components/PlayerAvatar.swift Boneyard/Views/Components/DominoTile.swift \
+  Boneyard/Views/Components/ScoreboardTable.swift Boneyard/Views/Components/ScoreEntryRow.swift \
+  Boneyard/Views/HomeView.swift Boneyard/Views/PlayerListView.swift \
+  Boneyard/Views/PlayerEditView.swift Boneyard/Views/PlayerProfileView.swift \
+  Boneyard/Views/GameSetupView.swift Boneyard/Views/ActiveGameView.swift \
+  Boneyard/Views/GameSummaryView.swift Boneyard/Views/GameHistoryView.swift \
+  Boneyard/Views/SettingsView.swift Boneyard/Views/SplashView.swift
+
+# Build for simulator
+xcodebuild -project Boneyard.xcodeproj -scheme Boneyard \
+  -destination "platform=iOS Simulator,name=iPhone 17 Pro" \
+  -configuration Debug build
+
+# Install and launch on booted simulator
+xcrun simctl install booted .build/simulator/Build/Products/Debug-iphonesimulator/Boneyard.app
+xcrun simctl launch booted app.boneyard
 ```
 
-## Releasing
+## iOS — Releasing
 
-Push a version tag to trigger the CI pipeline to Google Play Internal Testing:
+Push a version tag to trigger the CI pipeline to TestFlight:
 
 ```bash
 git tag v1.0.0 && git push --tags
 ```
 
-Required GitHub secrets: `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`, `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON`.
+Required GitHub secrets: `DISTRIBUTION_CERTIFICATE_P12_BASE64`, `DISTRIBUTION_CERTIFICATE_PASSWORD`, `PROVISIONING_PROFILE_BASE64`, `PROVISIONING_PROFILE_NAME`, `ASC_KEY_ID`, `ASC_ISSUER_ID`, `ASC_PRIVATE_KEY`.

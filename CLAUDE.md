@@ -2,41 +2,41 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Repository overview
+
+This is the **public `boneyard` repository**. It contains:
+
+- `ios/` — Swift/SwiftUI iOS app
+- `site/` — GitHub Pages website (landing page, how-to-play, privacy policy)
+- `prd.md` — Product requirements document (source of truth for game rules)
+
+The Android app lives in a separate private repository: **`boneyard-android`**.
+
 ## Mandatory rules
 
-These three rules apply to every task in this repo, without exception:
+These rules apply to every task in this repo:
 
-1. **Build verification** — After any code change, run the build/compile check for the affected platform before reporting the task done. Android: `./gradlew assembleDebug` from `android/`. iOS: the `swiftc` syntax check from `ios/CONTRIBUTING.md`. Both must pass cleanly.
+1. **Build verification** — After any iOS code change, run the `swiftc` syntax check below before reporting done.
 
-2. **Documentation sync** — If you change architecture, add/remove dependencies, rename commands, or alter game rules, update the relevant CLAUDE.md files (`CLAUDE.md` at root and/or `android/CLAUDE.md`) in the same task. Never leave docs stale.
+2. **Documentation sync** — If you change architecture, add/remove dependencies, rename commands, or alter game rules, update `CLAUDE.md` and `prd.md` in the same task.
 
-3. **Platform parity** — iOS and Android implement the same product. If you add a feature or fix a bug on one platform, you must apply the equivalent change to the other in the same task — or explicitly call out the gap in your response with a clear "Parity gap: …" note so it can be tracked.
-
-4. **Deploy** — After building, deploy and launch on both platforms before reporting the task done. Android: `./gradlew installDebug` (requires a connected device or running emulator). iOS: install and launch on the booted simulator — `xcrun simctl install booted <path/to/Boneyard.app>` then `xcrun simctl launch booted app.boneyard`.
+3. **Deploy** — After building, deploy and launch on the booted simulator before reporting done:
+   ```bash
+   xcrun simctl install booted .build/simulator/Build/Products/Debug-iphonesimulator/Boneyard.app
+   xcrun simctl launch booted app.boneyard
+   ```
 
 ## Store release pipeline
 
-Releases are published via Fastlane + GitHub Actions. Pushing a `v*` tag (e.g. `git tag v1.0.1 && git push --tags`) triggers both workflows automatically.
+iOS releases are published via Fastlane + GitHub Actions. Pushing a `v*` tag triggers the workflow automatically.
 
 | Workflow | File | Destination |
 |---|---|---|
-| Android Release | `.github/workflows/android-release.yml` | Google Play Internal Testing |
 | iOS Release | `.github/workflows/ios-release.yml` | TestFlight (internal) |
+| GitHub Pages | `.github/workflows/pages.yml` | GitHub Pages (from `site/`) |
 
-Both workflows can also be triggered manually from the GitHub Actions UI via `workflow_dispatch`.
+### Required GitHub repository secrets (iOS)
 
-### Required GitHub repository secrets
-
-**Android:**
-| Secret | How to get it |
-|---|---|
-| `KEYSTORE_BASE64` | `base64 -i your-key.jks` |
-| `KEYSTORE_PASSWORD` | Password chosen when generating the keystore |
-| `KEY_ALIAS` | Alias chosen when generating the keystore |
-| `KEY_PASSWORD` | Key password (often same as store password) |
-| `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON` | Full JSON content of the service account key from Play Console → Setup → API access |
-
-**iOS:**
 | Secret | How to get it |
 |---|---|
 | `DISTRIBUTION_CERTIFICATE_P12_BASE64` | Export from Keychain Access → `base64 -i cert.p12` |
@@ -48,29 +48,6 @@ Both workflows can also be triggered manually from the GitHub Actions UI via `wo
 | `ASC_PRIVATE_KEY` | Contents of the downloaded `.p8` file |
 
 ---
-
-## Repository overview
-
-Boneyard is a 4-player domino score-tracking app available on Android and iOS. It is a monorepo with one directory per platform:
-
-- `android/` — Kotlin/Compose app; has its own detailed `android/CLAUDE.md`
-- `ios/` — Swift/SwiftUI app
-
-The Android app has its own deeper CLAUDE.md at `android/CLAUDE.md` — read it when working in that directory.
-
-## Android commands
-
-Run all commands from the `android/` directory:
-
-```bash
-./gradlew assembleDebug          # Build debug APK
-./gradlew test                   # Run all unit tests
-./gradlew test --tests "app.boneyard.SomeTest"  # Run a single test class
-./gradlew installDebug           # Install on connected device
-./gradlew lint                   # Lint check
-```
-
-CI runs `./gradlew assembleDebug` on every push/PR via `.github/workflows/android.yml`.
 
 ## iOS commands
 
@@ -119,14 +96,12 @@ MVVM backed by SwiftData (no separate repository layer):
 - `Utils/ThemeColors.swift` — semantic color tokens (`Color.appBackground`, `Color.appSurface`, `Color.appRowBackground`, `Color.appGray`) that adapt per theme — always use these instead of platform UIKit colors
 - `Views/Components/` — `PlayerAvatar`, `DominoTile`, `ScoreboardTable`, `ScoreEntryRow`
 
-iOS platform compatibility rules (see `ios/CONTRIBUTING.md` for details):
+iOS platform compatibility rules:
 - Wrap iOS-only modifiers in `#if os(iOS)` blocks so code compiles on macOS SDK
 - Use cross-platform toolbar placements (`.primaryAction`, `.confirmationAction`) not iOS-only ones
 - Use `SF Symbols` (`Image(systemName:)`) rather than Unicode emoji
 
-## Shared domain / game rules
-
-Both platforms implement the same rules (source of truth: `prd.md`):
+## Game rules (source of truth: `prd.md`)
 
 | Rule | Value |
 |---|---|
@@ -142,3 +117,15 @@ Cascade delete: deleting a `Game` cascades to `GamePlayer`, `Round`, and `RoundS
 ## Color format
 
 Player colors are stored as hex strings. Both platforms support 6-digit (`#RRGGBB`) and 8-digit (`#AARRGGBB`) formats.
+
+## Website (`site/`)
+
+Static HTML/CSS site served via GitHub Pages. The workflow at `.github/workflows/pages.yml` deploys the `site/` folder on every push to `main` that touches `site/**`.
+
+Pages:
+- `site/index.html` — App landing page
+- `site/how-to-play.html` — Full game rules
+- `site/privacy.html` — Privacy policy
+- `site/style.css` — Shared styles
+
+To update the site, edit the files in `site/` and push to `main`. No build step required — it is plain HTML/CSS.
