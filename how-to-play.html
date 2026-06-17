@@ -128,6 +128,9 @@
         <div class="step-body">
           <h3>Shuffle &amp; Deal</h3>
           <p>The shaker turns all 28 tiles face-down and mixes them thoroughly. Each player then draws exactly 7 tiles and stands them up so only they can see their own tiles.</p>
+          <div class="callout" style="margin-top:10px;">
+            <strong>4-Doubles Reshake:</strong> After drawing, if any player finds they have <strong>4 or more doubles</strong> in their hand, all tiles must be returned, reshaken by the shaker, and redealt. Repeat until no player holds 4 or more doubles before play begins.
+          </div>
         </div>
       </li>
       <li>
@@ -136,14 +139,23 @@
           <h3>Find the Spinner</h3>
           <p>The player who holds the round's spinner (the required double) places it face-up in the center of the table to start the chain. For example, in Round 1 the spinner is Double-6 — whoever holds [6|6] plays it first.</p>
           <p style="margin-top:8px;">If no one has the spinner, players take turns drawing additional tiles from any leftover tiles until the spinner is found. The player who draws it plays it immediately.</p>
+          <div class="callout tip" style="margin-top:10px;">
+            <strong>Full Hand Play:</strong> If the spinner holder can play <em>all 7 of their tiles</em> in a single turn — every tile in their hand connects and can be laid down at once — they may do so immediately. The round ends on the spot: the spinner holder scores 0, and every other player scores the full pip count of every tile remaining in their hand.
+          </div>
         </div>
       </li>
       <li>
         <div class="step-num">3</div>
         <div class="step-body">
           <h3>Play Off the Spinner</h3>
-          <p>Play moves clockwise starting from the player to the left of whoever played the spinner. On your turn you must play a tile that matches one of the open ends on the table. The spinner can be extended in all four directions until all four sides are occupied — after that, play continues only off the two main open ends.</p>
-          <p style="margin-top:8px;">If you cannot play a tile, you must <strong>pass</strong> your turn. (All tiles were dealt at the start, so there is no boneyard to draw from during a round.)</p>
+          <p>Play moves clockwise starting from the player to the left of whoever played the spinner. On your turn you must play a tile that attaches to your end of the chain. The spinner extends in all four directions — each player builds out their own side. (All tiles were dealt at the start, so there is no boneyard to draw from during a round.)</p>
+
+          <h4 style="margin:14px 0 6px;font-size:14px;font-weight:700;">If you cannot play on your side:</h4>
+          <ul style="padding-left:20px;line-height:1.9;color:#333;margin:0;">
+            <li>If another player has already been <strong>knocked</strong> (see below), you may play a tile onto their chain instead of your own.</li>
+            <li>If no player has knocked, you are <strong>knocked</strong> — your turn is skipped and the other three players may continue building on <em>your</em> chain until you are able to re-enter play, either on your own chain or on another knocked player's chain.</li>
+          </ul>
+          <p style="margin-top:8px;color:#333;">A player returns to normal play as soon as they have a tile that fits somewhere available to them.</p>
         </div>
       </li>
       <li>
@@ -156,8 +168,19 @@
       <li>
         <div class="step-num">5</div>
         <div class="step-body">
+          <h3>Locked Round</h3>
+          <p>A round becomes <strong>locked</strong> when every player is knocked and no one can make any play anywhere on the table. When this happens:</p>
+          <ul style="padding-left:20px;line-height:1.9;color:#333;margin:6px 0 0;">
+            <li>The round ends immediately — there is <strong>no round winner</strong>.</li>
+            <li>Every player scores the pip count of the tiles remaining in their hand.</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">6</div>
+        <div class="step-body">
           <h3>Score the Round</h3>
-          <p>Every other player counts the total number of pips (dots) on all tiles still in their hand. That pip count is their score for the round. Scores are entered into the Boneyard app and added to each player's running total.</p>
+          <p>Every player who did not go out counts the total number of pips (dots) on all tiles still in their hand. That pip count is their score for the round. Scores are entered into the Boneyard app and added to each player's running total.</p>
         </div>
       </li>
     </ol>
@@ -176,6 +199,8 @@
       <tbody>
         <tr><td>You go out first (play your last tile)</td><td><strong>0</strong> — round winner</td></tr>
         <tr><td>You have tiles left when someone goes out</td><td>Total pip count of your remaining tiles</td></tr>
+        <tr><td>Spinner holder plays full hand (all 7 tiles at once)</td><td>Spinner holder: <strong>0</strong>; all others: full pip count of their entire hand</td></tr>
+        <tr><td>Round is locked (no one can play)</td><td>No winner — every player scores the pip count of their remaining tiles</td></tr>
       </tbody>
     </table>
 
@@ -220,6 +245,9 @@
         <tr><td>Shaker rotation</td><td>Clockwise, advances one seat each round</td></tr>
         <tr><td>Round winner score</td><td>0 (goes out first)</td></tr>
         <tr><td>Other players score</td><td>Sum of pips on tiles still in hand</td></tr>
+        <tr><td>4 doubles in hand</td><td>Reshake and redeal before play starts</td></tr>
+        <tr><td>Spinner holder plays all 7 tiles</td><td>Spinner holder scores 0; others score full hand pip count</td></tr>
+        <tr><td>Locked round</td><td>No winner; all players score their remaining pip count</td></tr>
         <tr><td>Match winner</td><td>Lowest cumulative score after round 14</td></tr>
       </tbody>
     </table>
@@ -248,6 +276,14 @@
       <div>
         <dt style="font-weight:700;">Boneyard</dt>
         <dd style="color:#333;margin-left:0;margin-top:2px;">In standard domino games, the boneyard is the pile of undealt tiles you draw from. In Off-the-Spinner, all tiles are dealt at the start — no boneyard remains. The game (and this app) take their name from that pile.</dd>
+      </div>
+      <div>
+        <dt style="font-weight:700;">Knocked</dt>
+        <dd style="color:#333;margin-left:0;margin-top:2px;">A player who cannot play on their turn and has no knocked player to play off of. A knocked player's chain becomes available for other players to extend. A knocked player re-enters play as soon as they can place a tile somewhere on the table.</dd>
+      </div>
+      <div>
+        <dt style="font-weight:700;">Locked round</dt>
+        <dd style="color:#333;margin-left:0;margin-top:2px;">A round in which every player is knocked and no tile can be played anywhere. The round ends immediately with no winner — every player scores the pips remaining in their hand.</dd>
       </div>
       <div>
         <dt style="font-weight:700;">Running total</dt>
