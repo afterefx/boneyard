@@ -63,20 +63,24 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 4px;
 }
 .nav-domino-half {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
-  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1px;
+  width: 14px;
+  height: 14px;
 }
 .nav-domino-half .pip {
-  width: 4px;
-  height: 4px;
   background: var(--ink);
   border-radius: 50%;
+  width: 75%;
+  aspect-ratio: 1;
+  align-self: center;
+  justify-self: center;
 }
 .nav-divider { height: 1px; background: var(--border); width: 100%; opacity: 0.3; }
 nav a.nav-link {
@@ -112,7 +116,7 @@ nav a.nav-link.active { opacity: 1; color: var(--gold); }
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 8px 6px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.5);
   transform: rotate(10deg);
@@ -120,14 +124,17 @@ nav a.nav-link.active { opacity: 1; color: var(--gold); }
 .hero-domino-half {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 4px;
-  width: 100%;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 3px;
+  width: 36px;
+  height: 36px;
 }
 .hero-domino-half .pip {
-  width: 10px;
-  height: 10px;
   background: var(--ink);
   border-radius: 50%;
+  width: 85%;
+  aspect-ratio: 1;
+  align-self: center;
   justify-self: center;
 }
 .hero-domino hr {
@@ -245,24 +252,39 @@ tr:nth-child(even) td { background: var(--bg); }
   align-items: center;
   background: var(--ink);
   border-radius: 6px;
-  padding: 6px 5px;
-  gap: 4px;
+  padding: 5px 4px;
+  gap: 3px;
   vertical-align: middle;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
-.domino-face {
+/* f6: 2 cols × 3 rows — real domino 6 layout */
+.domino-face.f6 {
   display: grid;
-  gap: 3px;
-  width: 28px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 2px;
+  width: 20px;
+  height: 30px;
 }
-.domino-face.f6 { grid-template-columns: 1fr 1fr; }
-.domino-face.f5 { grid-template-columns: 1fr 1fr; }
-.domino-face.f0 { grid-template-columns: 1fr; }
+/* f1–f5: 3×3 grid with spacer spans at non-pip positions */
+.domino-face.f1,
+.domino-face.f2,
+.domino-face.f3,
+.domino-face.f4,
+.domino-face.f5 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 2px;
+  width: 30px;
+  height: 30px;
+}
 .domino-face .p {
-  width: 8px;
-  height: 8px;
   background: var(--ivory);
   border-radius: 50%;
+  width: 80%;
+  aspect-ratio: 1;
+  align-self: center;
   justify-self: center;
 }
 .domino hr { width: 80%; border: none; border-top: 1px solid rgba(245,240,232,0.25); }
