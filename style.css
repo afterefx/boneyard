@@ -431,6 +431,12 @@ tr:nth-child(even) td { background: var(--bg); }
 .prose ul li { margin-bottom: 6px; color: var(--ink); }
 .prose a  { color: var(--accent); }
 
+/* ── Glossary ────────────────────────────────────────────── */
+.glossary { display: grid; gap: 16px; }
+.glossary > div { padding-left: 12px; border-left: 3px solid var(--accent); }
+.glossary dt { font-weight: 700; color: var(--accent); font-size: 15px; margin-bottom: 3px; }
+.glossary dd { color: var(--ink); margin-left: 0; font-size: 14px; }
+
 /* ── Callout box ─────────────────────────────────────────── */
 .callout {
   background: #EBF4FF;
