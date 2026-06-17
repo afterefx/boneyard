@@ -289,6 +289,10 @@ tr:nth-child(even) td { background: var(--bg); }
 }
 .domino hr { width: 80%; border: none; border-top: 1px solid rgba(245,240,232,0.25); }
 
+/* ── Card list ───────────────────────────────────────────── */
+.card-list { padding-left: 20px; line-height: 2; color: #333; }
+.card-list li { color: #333; }
+
 /* ── Steps ───────────────────────────────────────────────── */
 .steps { list-style: none; counter-reset: step; }
 .steps li {
