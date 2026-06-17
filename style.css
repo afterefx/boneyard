@@ -294,6 +294,40 @@ tr:nth-child(even) td { background: var(--bg); }
 .spinner-cell .round-num { font-size: 10px; opacity: 0.55; margin-bottom: 4px; }
 .spinner-cell .double-val { font-size: 20px; font-weight: 800; color: var(--gold); }
 
+/* ── Horizontal domino (overview card) ───────────────────── */
+.domino-h {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  background: var(--ivory);
+  border-radius: 7px;
+  padding: 5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+.domino-h-half {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 2px;
+  width: 24px;
+  height: 24px;
+}
+.domino-h-half .pip {
+  background: var(--chrome);
+  border-radius: 50%;
+  width: 80%;
+  aspect-ratio: 1;
+  align-self: center;
+  justify-self: center;
+}
+.domino-h-div {
+  width: 1px;
+  height: 24px;
+  background: rgba(26,26,26,0.2);
+  flex-shrink: 0;
+  margin: 0 3px;
+}
+
 /* ── Domino visual ───────────────────────────────────────── */
 .domino {
   display: inline-flex;
